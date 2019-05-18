@@ -2,7 +2,7 @@
 #include <iostream>
 enum class PricingStrat;
 
-struct UnitEconomy
+struct UnitEconomyForJohnSnow
 {
 	int UA;				//+
 	double CONV;		//+
@@ -21,7 +21,8 @@ struct UnitEconomy
 	double AC;			//
 	double REV;			//
 	double CM;			//
-	UnitEconomy(int ua, double conv, int prodcount, double prodav, int cogsp, double cogsfix, double apc, double cpa)
+	UnitEconomyForJohnSnow() {}
+	UnitEconomyForJohnSnow(int ua, double conv, int prodcount, double prodav, int cogsp, double cogsfix, double apc, double cpa)
 	{
 		UA = ua;
 		CONV = conv;
@@ -43,14 +44,7 @@ struct UnitEconomy
 	}
 };
 
-enum class PricingStrat
-{
-
-};
-
-
-
-void Print(UnitEconomy* ec)
+void Print(UnitEconomyForJohnSnow* ec)
 {
 	std::cout
 		<< "Number of acquired users:"
@@ -82,7 +76,7 @@ void Print(UnitEconomy* ec)
 		<< "Cost of user acquisition:"
 		<< ec->CPA << std::endl
 		<< "Marketing budget:"
-		<< ec->AC << std::endl
+		<< (int)ec->AC << std::endl
 		<< "Revenue:"
 		<< ec->REV << std::endl
 		<< "...." << std::endl
@@ -90,4 +84,27 @@ void Print(UnitEconomy* ec)
 		<< "...." << std::endl
 		<< "Profit???:"
 		<< (int)ec->CM << std::endl;
+	std::cout << std::endl;
 }
+
+struct UnitEconomyFull
+{
+	//Plan
+	int U	 ;//Количество клиентов
+	int FC	 ;//Постоянные затраты
+	int ATV	 ;//Средняя стоимость покупки за период
+	int AN	 ;//Среднее кол-во покупок за период
+	int P	 ;//Рентабельность среднего чека
+	int T	 ;//Средняя продолжительность жизни клиента(в периодах)
+	int NC	 ;//Число новых клиентов
+	int CAC	 ;//Стоимость привлечения клиентов
+	//Facts	  //
+	int R	 ;//Выручка (Валовый доход)
+	int VC	 ;//Переменные затраты
+	int FCd	 ;//Постоянные затраты
+	int NP	 ;//Число покупок(чеков)
+	int U	 ;//Число клиентов совершивших покупки
+	int NC	 ;//Число новых клиентов
+	int MCCnc;//Стоимость всех затрат на привлечение новых клиентов
+	int T	 ;//Средняя продолжительность жизни клиента
+};
